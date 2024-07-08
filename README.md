@@ -1,2 +1,0 @@
-# SanchitSing
-Happiest birthday sanchit
