@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.3/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Surprise, Sanchit!</h1>
+        <img src="sanchit.jpg" alt="Friend's Photo" class="friend-img">
+        <p class="message">
+            Dear SANCHIT,<br><br>
+            Today is a special day and we celebrate the wonderful person you are. You bring so much joy and happiness to those around you. Your kindness, generosity, and sense of humor make you a true friend. On this special day, I want to remind you how much you are loved and appreciated. May your birthday be filled with joy, laughter, and all the things that bring you happiness. Here's to another year of incredible memories and achievements. Happy Birthday!
+        </p>
+    </div>
+
+    <script>
+        // Confetti effect
+        function confettiEffect() {
+            var duration = 15 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 }
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        // Bubble effect
+        function bubbleEffect() {
+            setInterval(function () {
+                var bubble = $('<div class="bubble"></div>');
+                var size = Math.random() * 50 + 20;
+                var left = Math.random() * 100;
+                bubble.css({
+                    width: size + 'px',
+                    height: size + 'px',
+                    left: left + '%'
+                });
+                $('body').append(bubble);
+                bubble.animate({
+                    bottom: '100%',
+                    opacity: 0
+                }, 4000, function () {
+                    bubble.remove();
+                });
+            }, 500);
+        }
+
+        // Initialize effects
+        $(document).ready(function() {
+            confettiEffect();
+            bubbleEffect();
+        });
+    </script>
+</body>
+</html>
